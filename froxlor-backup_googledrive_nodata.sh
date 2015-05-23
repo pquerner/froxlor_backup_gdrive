@@ -59,7 +59,7 @@ tar -zcf $BACKUP_DIR/tmp/backup.tar.gz /var/customers/mail/
 
 # Archiv upload
 echo "Uploading mail backup..."
-skicka upload $BACKUP_TO/mail
+skicka mkdir -p $BACKUP_TO/mail
 skicka upload $BACKUP_DIR/tmp/backup.tar.gz $BACKUP_TO/mail/backup_$(date +"%Y-%m-%d_%H-%M").tar.gz
 
 # Delete mail backup
