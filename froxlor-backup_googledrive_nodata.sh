@@ -3,9 +3,16 @@
 ###  Config  ###
 ################
 BACKUP_DIR="/root/FroxlorBACKUP/backup"
-BACKUP_TO="/vps-backups/server_webhod"
-MYSQL_USER="root"
-MYSQL_PASSWORD="password"
+BACKUP_TO="/vps-backups/server_netcup"
+MYSQL_USER="<username>"
+MYSQL_PASSWORD="<password>"
+
+# TODO: error handling (mysql or tar to stderr etc)
+
+# create backup dir
+mkdir -p "$BACKUP_DIR"
+mkdir -p "$BACKUP_DIR/DBs"
+mkdir -p "$BACKUP_DIR/tmp"
 
 # Create dir in GDrive
 echo "Creating dir $BACKUP_TO on GoogleDrive"
@@ -31,7 +38,7 @@ skicka upload $BACKUP_DIR/tmp/backup.tar.gz $BACKUP_TO/databases/backup_$(date +
 # Delete mysql backups
 rm $BACKUP_DIR/DBs/*
 rm $BACKUP_DIR/tmp/backup.tar.gz
-echo "Database backup finishedt!"
+echo "Database backup finished!"
 
 ####################
 ### DATA-BACKUP ###
